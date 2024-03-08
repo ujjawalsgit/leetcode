@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int min(int n1 , int n2){
+        return (n1 < n2) ? n1 : n2;
+    }
+    int findMinimumOperations(string s1, string s2, string s3) {
+        int len1 = s1.length();
+        int len2 = s2.length();
+        int len3 = s3.length();
+        int min1 = min(len1 , len2);
+        int min2 = min(min1 , len3);
+        int cnt = 0;
+        for(int i = 0 ; i<min2 ; i++){
+            if(s1[i] == s2[i] && s2[i] == s3[i])
+            cnt++;
+            else
+            break;
+        }
+        if(cnt == 0) return -1;
+        return len1 - cnt + len2 - cnt + len3 - cnt;
+    }
+};
